@@ -1,5 +1,6 @@
 package tech.ada.marcel.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ public class ContentController {
     private UserService userService;
 
     @PostMapping
-    public Content save(@RequestBody ContentDTO contentDTO) {
+    public Content save(@RequestBody @Valid ContentDTO contentDTO) {
         User user = userService.findById(contentDTO.userId());
         Content content = new Content(contentDTO.description(), contentDTO.url(), user);
         return contentService.save(content);

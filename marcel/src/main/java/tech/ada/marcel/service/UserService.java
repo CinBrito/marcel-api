@@ -6,6 +6,8 @@ import tech.ada.marcel.model.User;
 import tech.ada.marcel.repository.UserRepository;
 import tech.ada.marcel.service.exceptions.DuplicateDataException;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -22,5 +24,9 @@ public class UserService {
 
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }
